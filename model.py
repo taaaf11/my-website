@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Protocol
 
 
@@ -5,3 +6,15 @@ from typing import Protocol
 class Animatable(Protocol):
     def on_change(self) -> None:
         ...
+
+
+# a link in link-tree
+@dataclass
+class Link:
+    heading: str | None
+    description: str
+    url: str
+
+    def __post_init__(self):
+        if self.heading is None:
+            self.heading = self.url
