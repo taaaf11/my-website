@@ -3,7 +3,11 @@ from typing import Protocol
 
 
 # nothing to do with `Animatable` in other languages
-class Animatable(Protocol):
+class AnimatableSectionProtocol(Protocol):
+    @property
+    def section_header(self):
+        ...
+
     def on_section_change(self) -> None:
         ...
 
