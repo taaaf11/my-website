@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import override
 
 from model import Link
-from ui.link_tree_control import LinkTreeControl
+from ui.links_tree_control import LinkTreeControl
 
 
 class ProjectLinksTreeControl(LinkTreeControl):

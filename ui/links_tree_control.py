@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import override
+import catppuccin
 import flet as ft
 
 from model import Link, AnimatableSectionABC
@@ -12,8 +12,13 @@ class LinkControl(ft.Container):
 
         self.link = link
 
+        self.heading_colors = {
+            'unvisited': catppuccin.PALETTE.frappe.colors.blue.hex,
+            'visited': catppuccin.PALETTE.frappe.colors.lavender.hex,
+        }
+
         heading = ft.Container(
-            content=ft.Text(value=link.heading, size=25, weight=ft.FontWeight.W_500, color=ft.Colors.BLUE),
+            content=ft.Text(value=link.heading, size=25, weight=ft.FontWeight.W_500, color=self.heading_colors['unvisited']),
             on_click=self._launch_link_url,
             ink=True,
         )
