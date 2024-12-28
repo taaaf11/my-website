@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import tomllib
+
 from dataclasses import dataclass
 # from typing import Protocol
 from abc import ABC, abstractmethod
@@ -34,3 +38,19 @@ class MusicData:
     album_artwork_url: str
     artist: str
     spotify_url: str
+
+    @classmethod
+    def from_data_file(cls, data_file_path: str = "music_data.toml") -> list[MusicData]:
+        musics_data = []
+        with open(data_file_path) as f:
+            musics_data_data = tomllib.loads(f.read())
+
+        for artist, songs in musics_data_data.items():
+            for song in songs:
+                music_data = cls(
+                    **song,
+                    artist=artist,
+                )
+                musics_data.append(music_data)
+
+        return musics_data
