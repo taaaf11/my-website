@@ -1,25 +1,25 @@
-from collections.abc import Callable
-
 import catppuccin
 import flet as ft
 
-from model import AnimatableSectionProtocol
+from model import AnimatableSectionABC
+from ui.nothing_to_show_control import NothingToShowControl
 
 
 class SectionsHolderControl(ft.Container):
-    def __init__(self, sections: list[AnimatableSectionProtocol]):
+    def __init__(self, sections: list[AnimatableSectionABC]):
         super().__init__()
         self.sections = sections
 
         self.tabs = [
             ft.Container(
-                ft.Text(section.section_header),
+                ft.Text(section.section_header, size=18, weight=ft.FontWeight.W_500),
                 ink=True,
                 padding=13,
                 border_radius=12,
                 data=section.section_header,
                 on_click=self._on_section_button_click
-            )
+            ) if section.section_header else
+            ft.Container()
             for section in sections
         ]
 
@@ -50,15 +50,17 @@ class SectionsHolderControl(ft.Container):
         first_tab.update()
 
     def _on_section_button_click(self, e):
-        section: AnimatableSectionProtocol
+        section: AnimatableSectionABC
         e.control: ft.Container
+
+        for tab in self.tabs:
+            if tab.content is None:
+                continue
+            tab.bgcolor = ft.Colors.TRANSPARENT
+            tab.content.color = None
 
         for section in self.sections:
             is_true_section = section.section_header == e.control.data
-
-            for tab in self.tabs:
-                tab.bgcolor = ft.Colors.TRANSPARENT
-                tab.content.color = None
 
             if is_true_section:
                 # updating tab color
@@ -67,5 +69,9 @@ class SectionsHolderControl(ft.Container):
                 e.control.update()
 
                 # updating section content
-                self.main_content.content = section
+                if section.is_empty:
+                    self.main_content.content = NothingToShowControl()
+                else:
+                    self.main_content.content = section
+
                 self.update()
