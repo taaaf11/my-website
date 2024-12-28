@@ -1,11 +1,18 @@
 from dataclasses import dataclass
-from typing import Protocol
+# from typing import Protocol
+from abc import ABC, abstractmethod
 
 
 # nothing to do with `Animatable` in other languages
-class AnimatableSectionProtocol(Protocol):
+class AnimatableSectionABC(ABC):
     @property
-    def section_header(self):
+    @abstractmethod
+    def is_empty(self) -> bool:
+        ...
+
+    @property
+    @abstractmethod
+    def section_header(self) -> str:
         ...
 
 
