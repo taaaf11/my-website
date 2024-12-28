@@ -15,8 +15,8 @@ class NothingToShowControl(ft.Container, AnimatableSectionABC):
         )
 
         text = ft.Text(
-            "Umm, nothing to show here yet,",
-            size=20,
+            "Sorry, nothing to show here yet.",
+            size=16,
         )
 
         self.content = ft.Column(
@@ -35,6 +35,3 @@ class NothingToShowControl(ft.Container, AnimatableSectionABC):
     @property
     def is_empty(self):
         return False
-
-
-# def nothing_to_show_control() -> ft.Control:
