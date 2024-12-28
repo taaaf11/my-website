@@ -1,0 +1,27 @@
+# format
+
+# [[artist]]
+# title = <song title>
+# album = <song album>
+# album_artwork_url = <album artwork, displayed by spotify
+# spotify_url = <spotify url of the song>
+
+[[massobeats]]
+title = "honey jam"
+album = "honey jam"
+album_artwork_url = "https://i.scdn.co/image/ab67616d00001e023d9310050700f5c9add1ce65"
+spotify_url = "https://open.spotify.com/track/5BFqrZjdzhTBPgRls7lEPt?si=a7d043248e354aa1"
+
+
+[[massobeats]]
+title = "lavender"
+album = "lavender"
+album_artwork_url = "https://i.scdn.co/image/ab67616d00001e029fc2b1db3113acb0bb9ad15f"
+spotify_url = "https://open.spotify.com/track/276T8Yws7uB8KroshhAZtc?si=93cb0c3053404b03"
+
+
+[[massobeats]]
+title = "familiar places"
+album = "familiar places"
+album_artwork_url = "https://i.scdn.co/image/ab67616d00001e02e1fccbfbf1831aae3a7c3842"
+spotify_url = "https://open.spotify.com/track/6WOqUeXu4VOoWxjsdOFwJ9?si=cda30ccebfb54c08"
