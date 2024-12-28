@@ -1,0 +1,40 @@
+import catppuccin
+import flet as ft
+
+from model import AnimatableSectionABC
+
+
+class NothingToShowControl(ft.Container, AnimatableSectionABC):
+    def __init__(self):
+        super().__init__()
+        cat_text = ft.Text(
+            "/⁠ᐠ⁠｡⁠ꞈ⁠｡⁠ᐟ⁠\\",
+            size=32,
+            weight=ft.FontWeight.W_600,
+            color=catppuccin.PALETTE.frappe.colors.maroon.hex,
+        )
+
+        text = ft.Text(
+            "Umm, nothing to show here yet,",
+            size=20,
+        )
+
+        self.content = ft.Column(
+            [
+                cat_text,
+                text
+            ],
+            spacing=28,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+        )
+
+    @property
+    def section_header(self):
+        return None
+
+    @property
+    def is_empty(self):
+        return False
+
+
+# def nothing_to_show_control() -> ft.Control:
