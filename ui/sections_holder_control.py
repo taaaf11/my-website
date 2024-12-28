@@ -24,7 +24,7 @@ class SectionsHolderControl(ft.Container):
         ]
 
         self.main_content = ft.AnimatedSwitcher(
-            sections[0],
+            sections[0] if not sections[0].is_empty else NothingToShowControl(),
             duration=300,
             reverse_duration=300,
         )
@@ -32,10 +32,11 @@ class SectionsHolderControl(ft.Container):
         self.content = ft.Column(
             controls=[
                 ft.Row(self.tabs, alignment=ft.MainAxisAlignment.CENTER),
+                ft.Container(height=15),
                 ft.Container(ft.Divider(thickness=1), width=200),
+                ft.Container(height=25),
                 self.main_content,
             ],
-            alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         )
 
