@@ -26,3 +26,11 @@ class Link:
     def __post_init__(self):
         if self.heading is None:
             self.heading = self.url
+
+@dataclass
+class MusicData:
+    title: str
+    album: str
+    album_artwork_url: str
+    artist: str
+    spotify_url: str
