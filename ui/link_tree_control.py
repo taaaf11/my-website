@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import override
 import flet as ft
 
-from model import Link
+from model import Link, AnimatableSectionABC
 
 
 class LinkControl(ft.Container):
@@ -33,7 +33,7 @@ class LinkControl(ft.Container):
         self.page.launch_url(self.link.url)
 
 
-class LinkTreeControl(ft.Container):
+class LinkTreeControl(ft.Container, AnimatableSectionABC):
     def __init__(self, links: list[Link], *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -49,12 +49,6 @@ class LinkTreeControl(ft.Container):
     def section_header(self):
         return "Links"
 
-
-class ProjectLinksTreeControl(LinkTreeControl):
-    def __init__(self, project_links: list[Link], *args, **kwargs):
-        super().__init__(links=project_links, *args, **kwargs)
-
-    @override
     @property
-    def section_header(self):
-        return "Projects"
+    def is_empty(self):
+        return False
