@@ -8,9 +8,6 @@ class AnimatableSectionProtocol(Protocol):
     def section_header(self):
         ...
 
-    def on_section_change(self) -> None:
-        ...
-
 
 # a link in link-tree
 @dataclass
