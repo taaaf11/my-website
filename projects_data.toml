@@ -1,0 +1,13 @@
+[Assignmentser]
+description = "A software to track your assignments."
+url = "https://github.com/taaaf11/Assignmentser"
+
+
+[remove-ignore]
+description = "A script to remove git-ignored paths."
+url = "https://github.com/taaaf11/remove-ignore"
+
+
+[flashcards-flutter]
+description = "A flashcard app for learning."
+url = "https://github.com/taaaf11/flashcards-flutter"
