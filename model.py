@@ -31,11 +31,14 @@ class Link:
             self.heading = self.url
 
     @classmethod
-    def from_data_file(cls, data_file_path: str):
+    def from_data_file(cls, data_file_path: str) -> list[Link]:
         links = []
 
-        with open(data_file_path) as f:
-            links_data = tomllib.loads(f.read())
+        try:
+            with open(data_file_path) as f:
+                links_data = tomllib.loads(f.read())
+        except FileNotFoundError:
+            return []
 
         for heading, data in links_data.items():
             links.append(
@@ -58,11 +61,12 @@ class MusicData:
     @classmethod
     def from_data_file(cls, data_file_path: str = "music_data.toml") -> list[MusicData]:
         musics_data = []
-        with open(data_file_path) as f:
-            musics_data_data = tomllib.loads(f.read())
 
-        artist: str
-        songs: list[dict]
+        try:
+            with open(data_file_path) as f:
+                musics_data_data = tomllib.loads(f.read())
+        except FileNotFoundError:
+            return []
 
         for artist, songs in musics_data_data.items():
             for song in songs:
