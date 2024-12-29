@@ -50,13 +50,13 @@ class SectionsHolderControl(ft.Container):
         first_tab.content.color = catppuccin.PALETTE.frappe.colors.crust.hex
         first_tab.update()
 
-    def _on_section_button_click(self, e):
+    def _on_section_button_click(self, e) -> None:
         section: AnimatableSectionABC
-        e.control: ft.Container
 
         for tab in self.tabs:
             if tab.content is None:
                 continue
+
             tab.bgcolor = ft.Colors.TRANSPARENT
             tab.content.color = None
 
