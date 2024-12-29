@@ -12,7 +12,7 @@ class SectionsHolderControl(ft.Container):
 
         self.tabs = [
             ft.Container(
-                ft.Text(section.section_header, size=18, weight=ft.FontWeight.W_500),
+                ft.Text(section.section_header, size=17, weight=ft.FontWeight.W_500),
                 ink=True,
                 padding=13,
                 border_radius=12,
