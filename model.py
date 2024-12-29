@@ -3,7 +3,6 @@ from __future__ import annotations
 import tomllib
 
 from dataclasses import dataclass
-# from typing import Protocol
 from abc import ABC, abstractmethod
 
 
@@ -31,6 +30,23 @@ class Link:
         if self.heading is None:
             self.heading = self.url
 
+    @classmethod
+    def from_data_file(cls, data_file_path: str):
+        links = []
+
+        with open(data_file_path) as f:
+            links_data = tomllib.loads(f.read())
+
+        for heading, data in links_data.items():
+            links.append(
+                cls(
+                    **data,
+                    heading=heading,
+                )
+            )
+
+        return links
+
 @dataclass
 class MusicData:
     title: str
@@ -44,6 +60,9 @@ class MusicData:
         musics_data = []
         with open(data_file_path) as f:
             musics_data_data = tomllib.loads(f.read())
+
+        artist: str
+        songs: list[dict]
 
         for artist, songs in musics_data_data.items():
             for song in songs:
