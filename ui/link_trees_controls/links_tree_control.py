@@ -20,9 +20,7 @@ class LinkControl(ft.Container):
         }
 
         heading = ft.Container(
-            content=ft.Text(value=link.heading, size=25, weight=ft.FontWeight.W_500, color=self.heading_colors['unvisited']),
-            on_click=self._launch_link_url,
-            ink=True,
+            content=ft.Text(value=link.heading, size=21, weight=ft.FontWeight.W_500, color=self.heading_colors['unvisited']),
         )
         description = ft.Text(value=link.description)
 
@@ -41,6 +39,8 @@ class LinkControl(ft.Container):
         )
         self.border_radius = 12
         self.padding = 15
+
+        self.on_click = self._launch_link_url
 
     def _launch_link_url(self, _) -> None:
         self.page.launch_url(self.link.url)
