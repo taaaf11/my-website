@@ -35,6 +35,12 @@ class LinkControl(ft.Container):
             expand=False,
         )
         self.ink = True
+        self.border = ft.border.all(
+            1,
+            catppuccin.PALETTE.frappe.colors.flamingo.hex
+        )
+        self.border_radius = 12
+        self.padding = 15
 
     def _launch_link_url(self, _) -> None:
         self.page.launch_url(self.link.url)
