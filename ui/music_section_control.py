@@ -1,4 +1,4 @@
-from typing import override
+# from typing import override
 
 import catppuccin
 import flet as ft
@@ -44,12 +44,12 @@ class MusicSectionControl(ft.Container, AnimatableSectionABC):
             ]
         )
 
-    @override
+    # @override
     @property
     def section_header(self) -> str:
         return "Music"
 
-    @override
+    # @override
     @property
     def is_empty(self):
         return False

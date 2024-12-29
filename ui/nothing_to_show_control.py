@@ -1,4 +1,4 @@
-from typing import override
+# from typing import override
 
 import catppuccin
 import flet as ft
@@ -30,12 +30,12 @@ class NothingToShowControl(ft.Container, AnimatableSectionABC):
             horizontal_alignment=ft.CrossAxisAlignment.CENTER
         )
 
-    @override
+    # @override
     @property
     def section_header(self):
         return None
 
-    @override
+    # @override
     @property
     def is_empty(self):
         return False

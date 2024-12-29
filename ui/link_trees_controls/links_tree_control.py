@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import override
+# from typing import override
 
 import catppuccin
 import flet as ft
@@ -58,12 +58,12 @@ class LinkTreeControl(ft.Container, AnimatableSectionABC):
             divider_thickness=2
         )
 
-    @override
+    # @override
     @property
     def section_header(self):
         return "Links"
 
-    @override
+    # @override
     @property
     def is_empty(self):
         return False
