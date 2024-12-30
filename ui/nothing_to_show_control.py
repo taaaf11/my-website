@@ -33,7 +33,7 @@ class NothingToShowControl(ft.Container, AnimatableSectionABC):
     # @override
     @property
     def section_header(self):
-        return None
+        return "None"
 
     # @override
     @property
