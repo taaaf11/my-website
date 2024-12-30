@@ -7,7 +7,6 @@ from model import SectionABC, MusicData
 
 
 class MusicControl(ft.Container):
-    # def __init__(self, title: str, album: str, album_artwork_url: str, artist: str, spotify_url: str, *args, **kwargs):
     def __init__(self, music_data: MusicData, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -16,17 +15,24 @@ class MusicControl(ft.Container):
                 ft.Image(music_data.album_artwork_url, width=100, height=100),
                 ft.Column(
                     [
-                        ft.Text(music_data.title, font_family="Comfortaa", weight=ft.FontWeight.BOLD, size=18),
-                        ft.Text(f"{music_data.artist} : : {music_data.album}", font_family="Comfortaa", weight=ft.FontWeight.W_300, size=15)
+                        ft.Text(
+                            music_data.title,
+                            font_family="Comfortaa",
+                            weight=ft.FontWeight.BOLD,
+                            size=18,
+                        ),
+                        ft.Text(
+                            f"{music_data.artist} : : {music_data.album}",
+                            font_family="Comfortaa",
+                            weight=ft.FontWeight.W_300,
+                            size=15,
+                        ),
                     ]
-                )
+                ),
             ]
         )
         self.ink = True
-        self.border = ft.border.all(
-            1,
-            catppuccin.PALETTE.frappe.colors.flamingo.hex
-        )
+        self.border = ft.border.all(1, catppuccin.PALETTE.frappe.colors.flamingo.hex)
         self.border_radius = 12
         self.padding = 15
 
