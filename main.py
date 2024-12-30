@@ -10,7 +10,7 @@ from ui.sections_holder_control import SectionsHolderControl
 # source for assets/gray0_ctp_on_line.svg: https://github.com/catppuccin/catppuccin/blob/main/assets/footers/gray0_ctp_on_line.svg
 
 
-def name_container():
+def name_container() -> ft.Control:
     name = ft.Text("Muhammad Altaaf", weight=ft.FontWeight.W_600, size=25)
     detail = ft.Text("A university undergraduate, pursuing computer science major.", size=16)
     picture = ft.CircleAvatar(
@@ -36,6 +36,18 @@ def name_container():
     return full_control
 
 
+def made_with_heart() -> ft.Control:
+    return ft.Text(
+        spans=[
+            ft.TextSpan("Made with "),
+            ft.TextSpan("", style=ft.TextStyle(font_family="Symbols-NF")),
+            ft.TextSpan(" and "),
+            ft.TextSpan("", style=ft.TextStyle(font_family="Symbols-NF")),
+
+        ]
+    )
+
+
 def main(page: ft.Page):
     page.scroll = ft.ScrollMode.AUTO
     use_palette = PALETTE.frappe
@@ -48,6 +60,7 @@ def main(page: ft.Page):
     page.fonts = {
         'Inter': "fonts/Inter-VariableFont_opsz,wght.ttf",
         'Comfortaa': "fonts/Comfortaa[wght].ttf",
+        'Symbols-NF': "fonts/SymbolsNerdFont-Regular.ttf"
     }
     page.theme = ft.Theme(font_family='Inter')
 
@@ -58,24 +71,19 @@ def main(page: ft.Page):
                     name_container(),
                     SectionsHolderControl(
                         [
-                            # EducationSectionControl(),
                             ProjectLinksTreeControl(Link.from_data_file('projects_data.toml')),
                             MusicSectionControl(musics_data=MusicData.from_data_file())
                         ]
                     ),
                 ],
                 spacing=50,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             ),
             width=page.width - 200,
             margin=ft.margin.symmetric(vertical=80),
             expand=True,
         ),
-        ft.Container(
-            ft.Image(
-                src='gray0_ctp_on_line.svg',
-            ),
-            expand=True
-        ),
+        made_with_heart()
     )
 
 ft.app(
