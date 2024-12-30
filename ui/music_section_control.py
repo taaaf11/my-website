@@ -63,11 +63,11 @@ class MusicControl(ft.Container):
 
         else:
             # gradually decrease volume before pausing
-            while round(self.__audio.volume, 1) > 0:
-                self.__audio.volume -= 0.1
-                self.__audio.update()
-
-                time.sleep(0.1)
+            # while round(self.__audio.volume, 1) > 0:
+            #     self.__audio.volume -= 0.1
+            #     self.__audio.update()
+            #
+            #     time.sleep(0.1)
 
             self.__audio.pause()
 
