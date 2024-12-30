@@ -35,6 +35,7 @@ class MusicControl(ft.Container):
             ]
         )
         self.ink = True
+        self.tooltip = music_data.credits.strip()
         self.border = ft.border.all(1, catppuccin.PALETTE.frappe.colors.flamingo.hex)
         self.border_radius = 12
         self.padding = 15
