@@ -1,5 +1,4 @@
 # from typing import override
-import time
 from typing import Optional
 
 import catppuccin
@@ -13,26 +12,43 @@ class MusicControl(ft.Container):
         super().__init__(*args, **kwargs)
 
         self.music_data = music_data
+        self.playing_note_icon = ft.Container(
+            ft.Icon(
+                ft.Icons.MUSIC_NOTE_ROUNDED,
+                size=27,
+                color=catppuccin.PALETTE.frappe.colors.lavender.hex,
+            ),
+            margin=ft.margin.Margin(left=0, top=0, right=10, bottom=0),
+            opacity=0,
+            animate_opacity=150,
+        )
+
         self.content = ft.Row(
             [
-                ft.Image(music_data.album_artwork_url, width=100, height=100),
-                ft.Column(
+                ft.Row(
                     [
-                        ft.Text(
-                            music_data.title,
-                            font_family="Comfortaa",
-                            weight=ft.FontWeight.BOLD,
-                            size=18,
-                        ),
-                        ft.Text(
-                            f"{music_data.artist} : : {music_data.album}",
-                            font_family="Comfortaa",
-                            weight=ft.FontWeight.W_300,
-                            size=15,
+                        ft.Image(music_data.album_artwork_url, width=100, height=100),
+                        ft.Column(
+                            [
+                                ft.Text(
+                                    music_data.title,
+                                    font_family="Comfortaa",
+                                    weight=ft.FontWeight.BOLD,
+                                    size=18,
+                                ),
+                                ft.Text(
+                                    f"{music_data.artist} : : {music_data.album}",
+                                    font_family="Comfortaa",
+                                    weight=ft.FontWeight.W_300,
+                                    size=15,
+                                ),
+                            ]
                         ),
                     ]
                 ),
-            ]
+                self.playing_note_icon,
+            ],
+            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
         )
         self.ink = True
         self.tooltip = music_data.credits.strip()
@@ -56,6 +72,10 @@ class MusicControl(ft.Container):
             return
 
         if e.data == "true":
+            # show note icon
+            self.playing_note_icon.opacity = 1
+            self.playing_note_icon.update()
+
             if self.__audio.volume != 1:
                 self.__audio.volume = 1
                 self.__audio.update()
@@ -69,6 +89,10 @@ class MusicControl(ft.Container):
             #     self.__audio.update()
             #
             #     time.sleep(0.1)
+
+            # hide note icon
+            self.playing_note_icon.opacity = 0
+            self.playing_note_icon.update()
 
             self.__audio.pause()
 
