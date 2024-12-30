@@ -37,6 +37,7 @@ class MusicSectionControl(ft.Container, AnimatableSectionABC):
     def __init__(self, musics_data: list[MusicData]):
         super().__init__()
 
+        self.musics_data = musics_data
         self.content = ft.Column(
             [
                 MusicControl(music_data, margin=ft.margin.symmetric(vertical=5))
@@ -52,4 +53,4 @@ class MusicSectionControl(ft.Container, AnimatableSectionABC):
     # @override
     @property
     def is_empty(self):
-        return False
+        return not bool(self.musics_data)
