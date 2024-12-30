@@ -18,8 +18,7 @@ class SectionsHolderControl(ft.Container):
                 border_radius=12,
                 data=section.section_header,
                 on_click=self._on_section_button_click
-            ) if section.section_header else
-            ft.Container()
+            )
             for section in sections
         ]
 
@@ -51,8 +50,6 @@ class SectionsHolderControl(ft.Container):
         first_tab.update()
 
     def _on_section_button_click(self, e) -> None:
-        section: SectionABC
-
         for tab in self.tabs:
             if tab.content is None:
                 continue
@@ -61,6 +58,7 @@ class SectionsHolderControl(ft.Container):
             tab.content.color = None
 
         for section in self.sections:
+            # true section is the section whose tab is clicked
             is_true_section = section.section_header == e.control.data
 
             if is_true_section:
