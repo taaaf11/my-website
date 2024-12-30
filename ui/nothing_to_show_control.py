@@ -3,10 +3,10 @@
 import catppuccin
 import flet as ft
 
-from model import AnimatableSectionABC
+from model import SectionABC
 
 
-class NothingToShowControl(ft.Container, AnimatableSectionABC):
+class NothingToShowControl(ft.Container, SectionABC):
     def __init__(self):
         super().__init__()
         cat_text = ft.Text(

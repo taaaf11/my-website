@@ -6,8 +6,7 @@ from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
 
-# nothing to do with `Animatable` in other languages
-class AnimatableSectionABC(ABC):
+class SectionABC(ABC):
     @property
     @abstractmethod
     def is_empty(self) -> bool:

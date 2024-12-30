@@ -1,12 +1,12 @@
 import catppuccin
 import flet as ft
 
-from model import AnimatableSectionABC
+from model import SectionABC
 from ui.nothing_to_show_control import NothingToShowControl
 
 
 class SectionsHolderControl(ft.Container):
-    def __init__(self, sections: list[AnimatableSectionABC]):
+    def __init__(self, sections: list[SectionABC]):
         super().__init__()
         self.sections = sections
 
@@ -51,7 +51,7 @@ class SectionsHolderControl(ft.Container):
         first_tab.update()
 
     def _on_section_button_click(self, e) -> None:
-        section: AnimatableSectionABC
+        section: SectionABC
 
         for tab in self.tabs:
             if tab.content is None:

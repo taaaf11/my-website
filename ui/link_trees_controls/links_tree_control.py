@@ -5,7 +5,7 @@ from __future__ import annotations
 import catppuccin
 import flet as ft
 
-from model import Link, AnimatableSectionABC
+from model import Link, SectionABC
 
 
 class LinkControl(ft.Container):
@@ -46,7 +46,7 @@ class LinkControl(ft.Container):
         self.page.launch_url(self.link.url)
 
 
-class LinkTreeControl(ft.Container, AnimatableSectionABC):
+class LinkTreeControl(ft.Container, SectionABC):
     def __init__(self, links: list[Link], *args, **kwargs):
         super().__init__(*args, **kwargs)
 

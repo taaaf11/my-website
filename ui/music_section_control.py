@@ -3,7 +3,7 @@
 import catppuccin
 import flet as ft
 
-from model import AnimatableSectionABC, MusicData
+from model import SectionABC, MusicData
 
 
 class MusicControl(ft.Container):
@@ -33,7 +33,7 @@ class MusicControl(ft.Container):
         self.on_click = lambda _: self.page.launch_url(music_data.spotify_url)
 
 
-class MusicSectionControl(ft.Container, AnimatableSectionABC):
+class MusicSectionControl(ft.Container, SectionABC):
     def __init__(self, musics_data: list[MusicData]):
         super().__init__()
 
