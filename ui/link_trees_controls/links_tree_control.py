@@ -42,7 +42,7 @@ class LinkControl(ft.Container):
 
         self.on_click = self._launch_link_url
 
-    def _launch_link_url(self, _) -> None:
+    def _launch_link_url(self, _: ft.OptionalEventCallable) -> None:
         self.page.launch_url(self.link.url)
 
 

@@ -7,7 +7,7 @@ from model import SectionABC
 
 
 class NothingToShowControl(ft.Container, SectionABC):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         cat_text = ft.Text(
             "/⁠ᐠ⁠｡⁠ꞈ⁠｡⁠ᐟ⁠\\",
@@ -32,10 +32,10 @@ class NothingToShowControl(ft.Container, SectionABC):
 
     # @override
     @property
-    def section_header(self):
+    def section_header(self) -> str:
         return "None"
 
     # @override
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return False

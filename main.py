@@ -48,7 +48,7 @@ def made_with_heart() -> ft.Control:
     )
 
 
-def main(page: ft.Page):
+def main(page: ft.Page) -> None:
     page.scroll = ft.ScrollMode.AUTO
     use_palette = PALETTE.frappe
 
