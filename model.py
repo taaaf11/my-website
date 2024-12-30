@@ -56,6 +56,7 @@ class MusicData:
     album_artwork_url: str
     artist: str
     spotify_url: str
+    file_path: str | None
 
     @classmethod
     def from_data_file(cls, data_file_path: str = "music_data.toml") -> list[MusicData]:
@@ -69,6 +70,10 @@ class MusicData:
 
         for artist, songs in musics_data_data.items():
             for song in songs:
+                # sets file_path key to None
+                # when it is not present in data toml file
+                song["file_path"] = song.get("file_path")
+
                 music_data = cls(
                     **song,
                     artist=artist,
