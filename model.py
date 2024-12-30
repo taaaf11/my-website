@@ -57,6 +57,7 @@ class MusicData:
     artist: str
     spotify_url: str
     file_path: str | None
+    credits: str
 
     @classmethod
     def from_data_file(cls, data_file_path: str = "music_data.toml") -> list[MusicData]:
