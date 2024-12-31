@@ -33,7 +33,7 @@ class MusicControl(ft.Container):
                                 ft.Text(
                                     music_data.title,
                                     font_family="Comfortaa",
-                                    weight=ft.FontWeight.BOLD,
+                                    weight=ft.FontWeight.W_600,
                                     size=18,
                                 ),
                                 ft.Text(

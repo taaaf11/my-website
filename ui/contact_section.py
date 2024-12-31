@@ -21,7 +21,7 @@ class SingleContact(ft.Container):
                 ft.Container(
                     ft.Column(
                         [
-                            ft.Text(contact_data.heading, weight=ft.FontWeight.W_700, size=17),
+                            ft.Text(contact_data.heading, weight=ft.FontWeight.W_600, size=17),
                             ft.Text(contact_data.username),
                         ],
                         spacing=0,

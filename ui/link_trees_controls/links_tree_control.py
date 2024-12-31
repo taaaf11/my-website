@@ -15,12 +15,12 @@ class LinkControl(ft.Container):
         self.link = link
 
         self.heading_colors = {
-            'unvisited': catppuccin.PALETTE.frappe.colors.blue.hex,
+            'unvisited': catppuccin.PALETTE.frappe.colors.lavender.hex,
             'visited': catppuccin.PALETTE.frappe.colors.lavender.hex,
         }
 
         heading = ft.Container(
-            content=ft.Text(value=link.heading, size=21, weight=ft.FontWeight.W_500, color=self.heading_colors['unvisited']),
+            content=ft.Text(value=link.heading, size=21, weight=ft.FontWeight.W_600, color=self.heading_colors['unvisited']),
         )
         description = ft.Text(value=link.description)
 
