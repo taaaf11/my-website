@@ -20,7 +20,7 @@ class MusicControl(ft.Container):
             ),
             margin=ft.margin.Margin(left=0, top=0, right=10, bottom=0),
             opacity=0,
-            animate_opacity=150,
+            animate_opacity=ft.animation.Animation(duration=150),
         )
 
         self.content = ft.Row(
@@ -104,6 +104,10 @@ class MusicSectionControl(ft.Container, SectionABC):
         self.musics_data = musics_data
         self.content = ft.Column(
             [
+                ft.Text("My favorite music (hover to play).", size=16),
+            ]
+                +
+            [
                 MusicControl(music_data, margin=ft.margin.symmetric(vertical=5))
                 for music_data in musics_data
             ]
@@ -116,5 +120,5 @@ class MusicSectionControl(ft.Container, SectionABC):
 
     # @override
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return not bool(self.musics_data)
