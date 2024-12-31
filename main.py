@@ -63,7 +63,9 @@ def main(page: ft.Page) -> None:
         'Comfortaa': "fonts/Comfortaa[wght].ttf",
         'Symbols-NF': "fonts/SymbolsNerdFont-Regular.ttf"
     }
-    page.theme = ft.Theme(font_family='Inter')
+    # page.theme = ft.Theme(font_family='Inter')
+    page.theme = ft.Theme(font_family='Comfortaa')
+
     contact_datas = [
         ContactData(
             icon_char="",
