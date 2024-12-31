@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import string
 import tomllib
 
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
+from random import choice
+
+import catppuccin
+from catppuccin.models import Color
 
 
 class SectionABC(ABC):
@@ -57,6 +62,51 @@ class ContactData:
     username: str
     url: str
     card_color: str
+
+    # static class attribute
+    # used when using random colors
+    # for each card
+    # colors in this card would not
+    # be used for next random color
+    used_card_colors = []
+
+    def __post_init__(self):
+        for color in catppuccin.PALETTE.frappe.colors:
+            if color.rstrip(string.digits) in {
+                "text", "subtext", "overlay", "surface", "base", "mantle", "crust"
+            }:
+                if color not in ContactData.used_card_colors:
+                    ContactData.used_card_colors.append(color)
+
+    @staticmethod
+    def _generate_random_color() -> Color:
+        ctp_colors = list(catppuccin.PALETTE.frappe.colors)
+
+        while (card_color := choice(ctp_colors)) in ContactData.used_card_colors:
+            continue
+
+        return card_color
+
+    @classmethod
+    def from_data_file(cls, data_file_path: str = "contact_data.toml") -> list[ContactData]:
+        contact_datas = []
+
+        try:
+            with open(data_file_path) as f:
+                contact_datas_data = tomllib.loads(f.read())
+        except FileNotFoundError:
+            return []
+
+        for heading, data in contact_datas_data.items():
+            contact_datas.append(
+                cls(
+                    **data,
+                    heading=heading,
+                    card_color=ContactData._generate_random_color().hex,
+                )
+            )
+
+        return contact_datas
 
 
 @dataclass
