@@ -102,6 +102,11 @@ def main(page: ft.Page) -> None:
             expand=True,
         ),
         made_with_heart()
+        ft.Image(
+            src="gray0_ctp_on_line.svg",
+            color=catppuccin.PALETTE.frappe.colors.pink.hex,
+            opacity=1.0,
+        ),
     )
 
 ft.app(
