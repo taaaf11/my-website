@@ -15,7 +15,7 @@ def name_container() -> ft.Control:
     name = ft.Text("Muhammad Altaaf", weight=ft.FontWeight.W_600, size=25)
     detail = ft.Text("A university undergraduate, pursuing computer science major.", size=16)
     picture = ft.CircleAvatar(
-        background_image_url='https://avatars.githubusercontent.com/u/109919009?v=4',
+        background_image_src='https://avatars.githubusercontent.com/u/109919009?v=4',
         radius=35,
     )
 
