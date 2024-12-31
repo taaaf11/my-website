@@ -12,7 +12,7 @@ class SingleContact(ft.Container):
         self.content = ft.Column(
             [
                 ft.Container(
-                    ft.Text(contact_data.icon_char, font_family="Symbols-NF", size=20),
+                    ft.Text(contact_data.icon_char, font_family="Symbols-NF", color=catppuccin.PALETTE.frappe.colors.base.hex, size=20),
                     border_radius=10,
                     bgcolor=contact_data.card_color,
                     alignment=ft.alignment.center,
@@ -58,10 +58,15 @@ class ContactSection(ft.Container, SectionABC):
         super().__init__(*args, **kwargs)
 
         self.contact_datas = contact_datas
-        self.content = [
-            SingleContact(contact_data)
-            for contact_data in contact_datas
-        ]
+        self.content = ft.Row(
+            [
+                SingleContact(contact_data)
+                for contact_data in contact_datas
+            ],
+            alignment=ft.MainAxisAlignment.START,
+            spacing=18,
+            wrap=True,
+        )
 
     @property
     def section_header(self) -> str:
