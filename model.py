@@ -49,6 +49,16 @@ class Link:
 
         return links
 
+
+@dataclass
+class ContactData:
+    icon_char: str
+    heading: str
+    username: str
+    url: str
+    card_color: str
+
+
 @dataclass
 class MusicData:
     title: str
