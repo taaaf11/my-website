@@ -10,17 +10,23 @@ class SectionsHolderControl(ft.Container):
         super().__init__()
         self.sections = sections
 
-        self.tabs = [
-            ft.Container(
-                ft.Text(section.section_header, size=17, weight=ft.FontWeight.W_800),
+        self.tabs = []
+
+        for section in sections:
+            if not isinstance(section, SectionABC):
+                raise Exception(f"{type(section)} does not subclass SectionABC")
+
+            tab = ft.Container(
+                ft.Text(
+                    section.section_header, size=17, weight=ft.FontWeight.W_800
+                ),
                 ink=True,
                 padding=13,
                 border_radius=12,
                 data=section.section_header,
-                on_click=self._on_section_button_click
+                on_click=self._on_section_button_click,
             )
-            for section in sections
-        ]
+            self.tabs.append(tab)
 
         self.main_content = ft.AnimatedSwitcher(
             sections[0] if not sections[0].is_empty else NothingToShowControl(),
@@ -63,7 +69,9 @@ class SectionsHolderControl(ft.Container):
 
             if is_true_section:
                 # updating tab color
-                e.control.bgcolor = "#E6" + catppuccin.PALETTE.frappe.colors.pink.hex[1:]
+                e.control.bgcolor = (
+                    "#E6" + catppuccin.PALETTE.frappe.colors.pink.hex[1:]
+                )
                 e.control.content.color = catppuccin.PALETTE.frappe.colors.crust.hex
                 e.control.update()
 
