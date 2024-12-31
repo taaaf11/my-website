@@ -2,7 +2,8 @@ from catppuccin import PALETTE
 import flet as ft
 
 
-from model import Link, MusicData
+from model import Link, MusicData, ContactData
+from ui.contact_section import ContactSection
 from ui.link_trees_controls.projects_links_tree_control import ProjectLinksTreeControl
 from ui.music_section_control import MusicSectionControl
 from ui.sections_holder_control import SectionsHolderControl
@@ -63,6 +64,22 @@ def main(page: ft.Page) -> None:
         'Symbols-NF': "fonts/SymbolsNerdFont-Regular.ttf"
     }
     page.theme = ft.Theme(font_family='Inter')
+    contact_datas = [
+        ContactData(
+            icon_char="",
+            heading="Discord",
+            username="@taafu",
+            url="https://www.discord.com",
+            card_color=catppuccin.PALETTE.frappe.colors.lavender.hex,
+        ),
+        ContactData(
+            icon_char="",
+            heading="Mail",
+            username="taafuuu@gmail.com",
+            url="mailto:taafuuu@gmail.com",
+            card_color=catppuccin.PALETTE.frappe.colors.flamingo.hex,
+        ),
+    ]
 
     page.add(
         ft.Container(
@@ -72,7 +89,8 @@ def main(page: ft.Page) -> None:
                     SectionsHolderControl(
                         [
                             ProjectLinksTreeControl(Link.from_data_file('projects_data.toml')),
-                            MusicSectionControl(musics_data=MusicData.from_data_file())
+                            MusicSectionControl(musics_data=MusicData.from_data_file()),
+                            ContactSection(contact_datas),
                         ]
                     ),
                 ],
