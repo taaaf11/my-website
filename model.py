@@ -72,7 +72,7 @@ class ContactData:
 
     def __post_init__(self):
         for color in catppuccin.PALETTE.frappe.colors:
-            if color.rstrip(string.digits) in {
+            if color.name.rstrip(string.digits) in {
                 "text", "subtext", "overlay", "surface", "base", "mantle", "crust"
             }:
                 if color not in ContactData.used_card_colors:
@@ -92,7 +92,7 @@ class ContactData:
         contact_datas = []
 
         try:
-            with open(data_file_path) as f:
+            with open(data_file_path, encoding="utf-8") as f:
                 contact_datas_data = tomllib.loads(f.read())
         except FileNotFoundError:
             return []
