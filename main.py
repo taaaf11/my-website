@@ -1,3 +1,4 @@
+import catppuccin
 from catppuccin import PALETTE
 import flet as ft
 
@@ -12,7 +13,7 @@ from ui.sections_holder_control import SectionsHolderControl
 
 
 def name_container() -> ft.Control:
-    name = ft.Text("Muhammad Altaaf", weight=ft.FontWeight.W_600, size=25)
+    name = ft.Text("Muhammad Altaaf", weight=ft.FontWeight.W_800, size=25)
     detail = ft.Text("A university undergraduate, pursuing computer science major.", size=16)
     picture = ft.CircleAvatar(
         background_image_src='https://avatars.githubusercontent.com/u/109919009?v=4',
@@ -37,15 +38,15 @@ def name_container() -> ft.Control:
     return full_control
 
 
-def made_with_heart() -> ft.Control:
+def made_with_heart(color: str) -> ft.Control:
     return ft.Text(
         spans=[
             ft.TextSpan("Made with "),
             ft.TextSpan("", style=ft.TextStyle(font_family="Symbols-NF")),
             ft.TextSpan(" and "),
             ft.TextSpan("", style=ft.TextStyle(font_family="Symbols-NF")),
-
-        ]
+        ],
+        color=color,
     )
 
 
@@ -103,12 +104,12 @@ def main(page: ft.Page) -> None:
             margin=ft.margin.symmetric(vertical=80),
             expand=True,
         ),
-        made_with_heart()
         ft.Image(
             src="gray0_ctp_on_line.svg",
             color=catppuccin.PALETTE.frappe.colors.pink.hex,
             opacity=1.0,
         ),
+        made_with_heart(catppuccin.PALETTE.frappe.colors.rosewater.hex,)
     )
 
 ft.app(
