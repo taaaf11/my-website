@@ -4,7 +4,7 @@ import flet as ft
 
 
 from model import Link, MusicData, ContactData
-from ui.contact_section import ContactSection
+from ui.social_section import SocialSection
 from ui.link_trees_controls.projects_links_tree_control import ProjectLinksTreeControl
 from ui.music_section_control import MusicSectionControl
 from ui.sections_holder_control import SectionsHolderControl
@@ -93,7 +93,7 @@ def main(page: ft.Page) -> None:
                         [
                             ProjectLinksTreeControl(Link.from_data_file('projects_data.toml')),
                             MusicSectionControl(musics_data=MusicData.from_data_file()),
-                            ContactSection(contact_datas),
+                            SocialSection(contact_datas),
                         ]
                     ),
                 ],

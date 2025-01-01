@@ -53,7 +53,7 @@ class SingleContact(ft.Container):
             self.update()
 
 
-class ContactSection(ft.Container, SectionABC):
+class SocialSection(ft.Container, SectionABC):
     def __init__(self, contact_datas: list[ContactData], *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -70,7 +70,7 @@ class ContactSection(ft.Container, SectionABC):
 
     @property
     def section_header(self) -> str:
-        return "Contact"
+        return "Social"
 
     @property
     def is_empty(self) -> bool:
