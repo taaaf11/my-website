@@ -13,8 +13,8 @@ class SectionsHolderControl(ft.Container):
         self.tabs = []
 
         for section in sections:
-            if not isinstance(section, SectionABC):
-                raise Exception(f"{type(section)} does not subclass SectionABC")
+            if not issubclass(type(section), SectionABC):
+                raise Exception(f"{type(section)} does not implement SectionABC abstract base class")
 
             tab = ft.Container(
                 ft.Text(
