@@ -76,6 +76,13 @@ def main(page: ft.Page) -> None:
             card_color=catppuccin.PALETTE.frappe.colors.lavender.hex,
         ),
         ContactData(
+            icon_char="",
+            heading="Instagram (off)",
+            username="muhammad._.altaaf",
+            url="https://www.instagram.com/muhammad._.altaaf",
+            card_color=catppuccin.PALETTE.frappe.colors.maroon.hex,
+        ),
+        ContactData(
             icon_char="",
             heading="Mail",
             username="taafuuu@gmail.com",

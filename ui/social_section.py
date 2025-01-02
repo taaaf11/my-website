@@ -64,7 +64,7 @@ class SocialSection(ft.Container, SectionABC):
                 for contact_data in contact_datas
             ],
             alignment=ft.MainAxisAlignment.START,
-            spacing=18,
+            spacing=20,
             wrap=True,
         )
 
